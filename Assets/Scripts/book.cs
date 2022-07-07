@@ -68,7 +68,7 @@ public class book : MonoBehaviour
                 um = true;
             }
             
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire3"))
             {
                 currentLine++;
                 if (currentLine >= dialogLines.Length)

@@ -65,7 +65,7 @@ public class AbilityUnlock : MonoBehaviour
         {
             player.moveSpeed = 0;
             player.dashSpeed = 0;
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire3"))
             {
                 printer.text = "";
                 Canvas.SetActive(false);
