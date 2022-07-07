@@ -1,3 +1,3 @@
 # brainwars
-Aluno: José Hidasi Neto
-Repositório: ebacunity/brainwars
+# Aluno: José Hidasi Neto
+# Repositório: ebacunity/brainwars
