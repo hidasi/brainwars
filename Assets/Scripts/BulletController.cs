@@ -7,6 +7,7 @@ public class BulletController : MonoBehaviour
     public float bulletSpeed;
     public Rigidbody2D theRB;
     public GameObject impactEffect;
+    public float damageAmount = 1f;
 
     public Vector2 moveDir;
     private bool rotated;
@@ -29,6 +30,11 @@ public class BulletController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.tag == "Enemy")
+        {
+            other.GetComponentInParent<EnemyHealthController>().DamageEnemy(damageAmount);
+        }
+
         if (impactEffect != null)
         {
             Instantiate(impactEffect, transform.position, Quaternion.identity);
