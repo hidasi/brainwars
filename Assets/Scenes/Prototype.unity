@@ -156,8 +156,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.095566764, y: -1.0476922}
-  m_Size: {x: 1.4415078, y: 0.9459773}
+  m_Offset: {x: -0.09556547, y: -1.1564423}
+  m_Size: {x: 1.2141191, y: 0.72847754}
   m_Direction: 1
 --- !u!1 &108821084
 GameObject:
@@ -8924,11 +8924,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4684864126914899444, guid: 057c8d8f3e539eb4283732a534f398d0, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684864126914899444, guid: 057c8d8f3e539eb4283732a534f398d0, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 4684864126914899447, guid: 057c8d8f3e539eb4283732a534f398d0, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 057c8d8f3e539eb4283732a534f398d0, type: 3}
