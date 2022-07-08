@@ -35,6 +35,11 @@ public class BulletController : MonoBehaviour
             other.GetComponentInParent<EnemyHealthController>().DamageEnemy(damageAmount);
         }
 
+        if (other.tag == "flyingenemy")
+        {
+            other.GetComponentInParent<FlyingEnemyHealthController>().DamageEnemy(damageAmount);
+        }
+
         if (impactEffect != null)
         {
             Instantiate(impactEffect, transform.position, Quaternion.identity);

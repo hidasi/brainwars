@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealthController : MonoBehaviour
+public class FlyingEnemyHealthController : MonoBehaviour
 {
     public float totalHealth = 3;
     public GameObject deathEffect;
     public Animator anim;
-    public patrol PATROL;
+    public EnemyFlyingController flyingchaser;
     private bool dead;
 
     // Start is called before the first frame update
@@ -29,7 +29,7 @@ public class EnemyHealthController : MonoBehaviour
             if (deathEffect != null)
             {
                 Instantiate(deathEffect, transform.position, transform.rotation);
-                StartCoroutine(Death());
+                StartCoroutine(DeathFLYING());
                 dead = true;
             }
         }
@@ -43,9 +43,9 @@ public class EnemyHealthController : MonoBehaviour
         
     }
 
-    IEnumerator Death()
+    IEnumerator DeathFLYING()
     {
-            PATROL.moveSpeed = 0;       
+        flyingchaser.moveSpeed = 0;
         anim.SetTrigger("death");
         yield return new WaitForSeconds(3f);
         Destroy(gameObject);
