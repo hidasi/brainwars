@@ -141,6 +141,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 10
+--- !u!114 &104302502 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 193678919, guid: 057c8d8f3e539eb4283732a534f398d0, type: 3}
+  m_PrefabInstance: {fileID: 4684864127542925552}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104302500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd97039f3e7814468d69c8090a0bc62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &104302504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,7 +167,7 @@ MonoBehaviour:
   totalHealth: 2
   deathEffect: {fileID: 9007049176675196081, guid: 135e79006fa80414da89979cef332a63, type: 3}
   anim: {fileID: 1599562511}
-  PATROL: {fileID: 0}
+  PATROL: {fileID: 104302502}
 --- !u!70 &104302505
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
