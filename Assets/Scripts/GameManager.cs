@@ -1,65 +1,71 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject prefab;
-    public Transform location;
-    public List<GameObject> listOfObjects;
-    public int amount;
+    public static GameManager instance;
 
-    private void Awake()
+    void Awake()
     {
-        StartPool();
-    }
-    public void StartPool()
-    {
-        listOfObjects = new List<GameObject>();
-        for (int i = 0; i < amount; i++)
-        {
-            var obj = Instantiate(prefab, new Vector3(0,0,0),Quaternion.identity);
-            obj.SetActive(false);
-            listOfObjects.Add(obj);
-        }
+        if (instance != null)
+            GameObject.Destroy(instance);
+        else
+            instance = this;
+
+        DontDestroyOnLoad(this);
     }
 
-    public GameObject GetPooled()
-    {
-        for (int i = 0; i < amount; i++)
-        {
-            if (!listOfObjects[i].activeInHierarchy)
-            {
-                return listOfObjects[i];
-            }
-        }
-        return null;
-    }
+    public GameObject ui;
+    public int nbooks;
+    public Text nbookstext;
+    private bool isPaused;
+    private float moveinitial;
+    private float dashinitial;
+    public PlayerController player;
 
-    public void SpawnObject()
-    {
-        var obj = GetPooled();
-        obj.SetActive(true);
-        StartCoroutine(wait(obj));
-    }
     // Start is called before the first frame update
     void Start()
     {
-        
+
+        player = FindObjectOfType<PlayerController>();
+        moveinitial = player.moveSpeed;
+        dashinitial = player.dashSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetButtonDown("Start"))
         {
-            SpawnObject();
+            if (isPaused)
+            {
+                ResumeGame();
+            } else if (!isPaused)
+            {
+                PauseGame();
+            }
         }
     }
 
-    IEnumerator wait(GameObject ob)
+    void PauseGame()
     {
-        yield return new WaitForSeconds(4f);
-        ob.SetActive(false);
+        Time.timeScale = 0f;
+        AudioListener.pause = true;
+        nbookstext.text = "X " + nbooks;
+        ui.SetActive(true);
+        player.moveSpeed = 0;
+        player.dashSpeed = 0;
+        isPaused = true;
+    }
+    void ResumeGame()
+    {
+        Time.timeScale = 1;
+        AudioListener.pause = false;
+        ui.SetActive(false);
+        player.moveSpeed = moveinitial;
+        player.dashSpeed = dashinitial;
+        isPaused = false;
     }
 }

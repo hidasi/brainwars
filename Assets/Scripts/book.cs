@@ -76,6 +76,7 @@ public class book : MonoBehaviour
                     printer.SetActive(false);
                     player.moveSpeed = moveinitial;
                     player.dashSpeed = dashinitial;
+                    GameManager.instance.nbooks++;
                     Destroy(this.gameObject);
                 }
                 else
