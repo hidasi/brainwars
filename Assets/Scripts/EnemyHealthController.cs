@@ -9,10 +9,12 @@ public class EnemyHealthController : MonoBehaviour
     public Animator anim;
     public patrol PATROL;
     private bool dead;
+    public DamagePlayer dp;
 
     // Start is called before the first frame update
     void Start()
     {
+        dp = GetComponent<DamagePlayer>();
     }
 
     public void DamageEnemy(float damageAmount)
@@ -45,6 +47,7 @@ public class EnemyHealthController : MonoBehaviour
 
     IEnumerator Death()
     {
+        dp.damageAmount = 0;
             PATROL.moveSpeed = 0;       
         anim.SetTrigger("death");
         yield return new WaitForSeconds(3f);

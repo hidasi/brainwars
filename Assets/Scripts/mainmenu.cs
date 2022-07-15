@@ -14,6 +14,7 @@ public class mainmenu : MonoBehaviour
     {
         timer = timerfull;
         timeractive = timerfullactive;
+        AudioManager.instance.PlayMainMenuMusic();
     }
 
     // Update is called once per frame

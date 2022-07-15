@@ -9,12 +9,15 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        if (instance != null)
-            GameObject.Destroy(instance);
-        else
+        if (instance == null)
+        {
             instance = this;
-
-        DontDestroyOnLoad(this);
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public GameObject ui;

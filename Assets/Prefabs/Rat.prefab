@@ -149,7 +149,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &193678919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,6 +215,7 @@ MonoBehaviour:
   deathEffect: {fileID: 9007049176675196081, guid: 135e79006fa80414da89979cef332a63, type: 3}
   anim: {fileID: 4684864126914899448}
   PATROL: {fileID: 193678919}
+  dp: {fileID: 0}
 --- !u!1 &4684864126914899444
 GameObject:
   m_ObjectHideFlags: 0

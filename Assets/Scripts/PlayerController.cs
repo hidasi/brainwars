@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
 
         isOnGround = Physics2D.OverlapCircle(groundPoint.position, .2f, whatIsGround);
 
-        if (Input.GetButtonDown("Jump") && (isOnGround || (canDoubleJump && abilities.canDoubleJump)))
+        if (Input.GetButtonDown("Jump") && moveSpeed!=0 && (isOnGround || (canDoubleJump && abilities.canDoubleJump)))
         {
             if (isOnGround)
             {
@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour
             theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
         }
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && moveSpeed!=0)
         {
             
             anim.SetTrigger("shotFired");
@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
         //crawl mode
         if (!crawl.activeSelf)
         {
-            if (Input.GetAxisRaw("Vertical")<-0.9f && abilities.canCrawl)
+            if (Input.GetAxisRaw("Vertical")<-0.9f && abilities.canCrawl && moveSpeed!=0)
             {
                 crawlCounter -= Time.deltaTime;
                 if (crawlCounter <= 0)

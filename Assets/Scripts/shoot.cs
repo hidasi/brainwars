@@ -18,6 +18,7 @@ public class shoot : MonoBehaviour
     }
     public void shooting()
     {
+        AudioManager.instance.PlaySFX(21);
         player.shooting();
     }
 }

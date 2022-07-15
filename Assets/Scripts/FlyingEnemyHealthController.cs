@@ -47,7 +47,7 @@ public class FlyingEnemyHealthController : MonoBehaviour
     {
         flyingchaser.moveSpeed = 0;
         anim.SetTrigger("death");
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         Destroy(gameObject);
     }
 
