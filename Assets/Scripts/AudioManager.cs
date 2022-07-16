@@ -44,6 +44,12 @@ public class AudioManager : MonoBehaviour
         mainMenuMusic.Stop();
         levelmusic.Stop();
     }
+    public void PAUSEMUSIC()
+    {
+        intromusic.Stop();
+        mainMenuMusic.Stop();
+        levelmusic.Stop();
+    }
     public void PlaySFX(int sfxToPlay)
     {
         sfx[sfxToPlay].Stop();

@@ -11,7 +11,6 @@ public class intro1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AudioManager.instance.introMusic();
         rb = nave.GetComponent<Rigidbody2D>();
         StartCoroutine(intro1co());
     }
@@ -32,7 +31,9 @@ public class intro1 : MonoBehaviour
     }
     IEnumerator intro1co()
     {
-        yield return new WaitForSeconds(15f);
+        yield return new WaitForSeconds(7f);
         cima = true;
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene("Intro2");
     }
 }

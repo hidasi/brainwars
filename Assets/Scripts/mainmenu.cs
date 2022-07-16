@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class mainmenu : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class mainmenu : MonoBehaviour
     public float timerfull = 4f, timerfullactive=1;
     public float timer,timeractive;
     private bool calc;
+    private bool newgame;
+    private bool continuing=true;
     private int rand=3;
     // Start is called before the first frame update
     void Start()
@@ -72,6 +75,8 @@ public class mainmenu : MonoBehaviour
         float direction = Input.GetAxisRaw("Vertical") * Time.deltaTime;
         if (direction > 0)
         {
+            newgame = false;
+            continuing = true;
             image1.SetActive(true);
             image2.SetActive(false);
             lightning1.SetActive(true);
@@ -79,10 +84,17 @@ public class mainmenu : MonoBehaviour
         }
         if (direction < 0)
         {
+            newgame =true;
+            continuing = false;
             image1.SetActive(false);
             image2.SetActive(true);
             lightning1.SetActive(false);
             lightning2.SetActive(true);
+        }
+        if (newgame==true && Input.GetButtonDown("Jump"))
+        {
+            AudioManager.instance.PAUSEMUSIC();
+            SceneManager.LoadScene("Introvideo");
         }
     }
 }
