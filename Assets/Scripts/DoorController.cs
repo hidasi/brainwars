@@ -23,7 +23,7 @@ public class DoorController : MonoBehaviour
     {
         if (playerExiting)
         {
-            pc.transform.position = Vector3.MoveTowards(pc.transform.position, exitPoint.position, 30 * Time.deltaTime);
+            //pc.transform.position = Vector3.MoveTowards(pc.transform.position, exitPoint.position, 30 * Time.deltaTime);
         }
     }
 
@@ -33,8 +33,8 @@ public class DoorController : MonoBehaviour
         {
             if (!playerExiting)
             {
-                pc.moveSpeed = 0;
-                pc.dashSpeed = 0;
+                //pc.moveSpeed = 0;
+                //pc.dashSpeed = 0;
                 StartCoroutine(UseDoorCo());
             }
         }
@@ -43,11 +43,7 @@ public class DoorController : MonoBehaviour
     {
         playerExiting = true;
         //pc.anim.enabled = false;
-        yield return new WaitForSeconds(1.5f);
-
-        
-        pc.moveSpeed = speedinitial;
-        pc.dashSpeed = dashinitial;
+        yield return new WaitForSeconds(0f);
         RespawnController.instance.SetSpawn(exitPoint.position);
         SceneManager.LoadScene(levelToLoad);
     }

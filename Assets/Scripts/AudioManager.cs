@@ -20,6 +20,9 @@ public class AudioManager : MonoBehaviour
         
     }
     public AudioSource mainMenuMusic, intromusic,levelmusic;
+
+    public AudioSource warning;
+
     public AudioSource[] sfx;
     // Start is called before the first frame update
     public void PlayMainMenuMusic()
@@ -35,6 +38,7 @@ public class AudioManager : MonoBehaviour
             intromusic.Stop();
             levelmusic.Play();
             mainMenuMusic.Stop();
+            warning.Stop();
         }
         
     }
@@ -44,6 +48,16 @@ public class AudioManager : MonoBehaviour
         mainMenuMusic.Stop();
         levelmusic.Stop();
     }
+
+    public void warningMusic()
+    {
+        warning.Play();
+        warning.volume = 0.3f;
+        intromusic.Stop();
+        mainMenuMusic.Stop();
+        levelmusic.Stop();
+    }
+
     public void PAUSEMUSIC()
     {
         intromusic.Stop();
@@ -55,4 +69,5 @@ public class AudioManager : MonoBehaviour
         sfx[sfxToPlay].Stop();
         sfx[sfxToPlay].Play();
     }
+
 }

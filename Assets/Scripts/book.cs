@@ -18,9 +18,22 @@ public class book : MonoBehaviour
     private bool quatro;
     public string[] dialogLines;
     public int currentLine;
+    private int destroybook;
+    public float timeBetweenLetters=0.1f;
+
     // Start is called before the first frame update
     void Start()
     {
+        if (nbook == 1)
+        {
+            destroybook = PlayerPrefs.GetInt("book1");
+            if (destroybook == 1)
+            {
+                Destroy(this.gameObject);
+            }
+        }
+        
+
         player = FindObjectOfType<PlayerController>();
         moveinitial = player.moveSpeed;
         dashinitial = player.dashSpeed;
@@ -63,7 +76,8 @@ public class book : MonoBehaviour
             printer.SetActive(true);
             if (!um)
             {
-                texting.text = dialogLines[0];
+                StartCoroutine(Type(dialogLines[0]));
+                //texting.text = dialogLines[0];
                 currentLine=0;
                 um = true;
             }
@@ -78,10 +92,19 @@ public class book : MonoBehaviour
                     player.dashSpeed = dashinitial;
                     GameManager.instance.nbooks++;
                     Destroy(this.gameObject);
+                    if (nbook == 1)
+                    {
+                        PlayerPrefs.SetInt("book1", 1);
+                        PlayerPrefs.SetInt("books",PlayerPrefs.GetInt("books")+1);
+                    }
+                    
                 }
                 else
-                {          
-                    texting.text = dialogLines[currentLine];
+                {
+                    StopAllCoroutines();
+                    //texting.text = "";
+                    StartCoroutine(Type(dialogLines[currentLine]));
+                    //texting.text = dialogLines[currentLine];
                 }
             }
         }
@@ -91,6 +114,21 @@ public class book : MonoBehaviour
 
 
     }
+
+    IEnumerator Type(string s)
+    {
+        texting.text = "";
+        foreach(char l in s.ToCharArray())
+        {
+            texting.text += l;
+            yield return new WaitForSeconds(timeBetweenLetters);
+        }
+
+        
+    }
+
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         comecar=true;

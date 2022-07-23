@@ -33,7 +33,7 @@ public class destructible1 : MonoBehaviour
     }
     IEnumerator destroyed()
     {
-        anim.SetBool("destroy", true);
+        anim.SetTrigger("destroy");
         yield return new WaitForSeconds(1.2f);
         Destroy(gameObject);
     }
