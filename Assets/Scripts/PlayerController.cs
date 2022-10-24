@@ -29,11 +29,21 @@ public class PlayerController : MonoBehaviour
     private float afterImageCounter;
     public Color afterImageColor;
 
+    public int doublejump;
+
     // Start is called before the first frame update
     void Start()
     {
+        
         theRB = GetComponent<Rigidbody2D>();
         abilities = GetComponent<PlayerAbilityTracker>();
+
+        doublejump = PlayerPrefs.GetInt("doublejump");
+        if (doublejump == 1)
+        {
+            abilities.canDoubleJump = true;
+        }
+
     }
 
     // Update is called once per frame

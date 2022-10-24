@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class EVENT1 : MonoBehaviour
 {
@@ -50,10 +51,13 @@ public class EVENT1 : MonoBehaviour
         puppet.gameObject.GetComponent<Animator>().SetTrigger("fade");
         yield return new WaitForSeconds(3f);
         cam2.SetActive(false);
+        RespawnController.instance.vcam = FindObjectOfType<cinecam>().GetComponent<CinemachineVirtualCamera>();
+        //RespawnController.instance.vcam.Follow = FindObjectOfType<CharacterController>().transform;
         yield return new WaitForSeconds(2f);
         AudioManager.instance.PlayLevelMusic();
         PlayerPrefs.SetInt("EVENT1", 1);
         player.moveSpeed = moveinitial;
+        Destroy(gameObject);
     }
 
 }

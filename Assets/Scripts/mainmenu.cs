@@ -96,5 +96,15 @@ public class mainmenu : MonoBehaviour
             AudioManager.instance.PAUSEMUSIC();
             SceneManager.LoadScene("Introvideo");
         }
+        if (continuing == true && Input.GetButtonDown("Jump"))
+        {
+
+            //string s = PlayerPrefs.GetString("Continue");
+            if(PlayerPrefs.HasKey("Continue"))
+            {
+                AudioManager.instance.PlayLevelMusic();
+                SceneManager.LoadScene(PlayerPrefs.GetString("Continue"));
+            }
+        }
     }
 }

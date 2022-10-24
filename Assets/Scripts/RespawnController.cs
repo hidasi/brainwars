@@ -11,7 +11,7 @@ public class RespawnController : MonoBehaviour
     {
         instance = this;
     }
-    private Vector3 respawnPoint;
+    public Vector3 respawnPoint;
     public float waitToRespawn;
     public PlayerController playermovement;
     private GameObject thePlayer;
@@ -26,8 +26,10 @@ public class RespawnController : MonoBehaviour
     {
         thePlayer = PlayerHealthController.instance.gameObject;
         respawnPoint = thePlayer.transform.position;
-        vcam.Follow = FindObjectOfType<PlayerController>().transform;
+        
         playermovement = FindObjectOfType<PlayerController>();
+        vcam= FindObjectOfType<cinecam>().GetComponent<CinemachineVirtualCamera>();
+        vcam.Follow = playermovement.transform;
         dashinitial = playermovement.dashSpeed;
         speedinitial = playermovement.moveSpeed;
     }

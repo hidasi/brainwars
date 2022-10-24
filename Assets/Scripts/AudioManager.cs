@@ -23,6 +23,8 @@ public class AudioManager : MonoBehaviour
 
     public AudioSource warning;
 
+    public AudioSource violao;
+
     public AudioSource[] sfx;
     // Start is called before the first frame update
     public void PlayMainMenuMusic()
@@ -35,6 +37,7 @@ public class AudioManager : MonoBehaviour
     {
         if (!levelmusic.isPlaying)
         {
+            violao.Stop();
             intromusic.Stop();
             levelmusic.Play();
             mainMenuMusic.Stop();
@@ -52,7 +55,16 @@ public class AudioManager : MonoBehaviour
     public void warningMusic()
     {
         warning.Play();
-        warning.volume = 0.3f;
+        warning.volume = 0.2f;
+        intromusic.Stop();
+        mainMenuMusic.Stop();
+        levelmusic.Stop();
+    }
+
+    public void violaomusic()
+    {
+        violao.Play();
+        warning.Stop();
         intromusic.Stop();
         mainMenuMusic.Stop();
         levelmusic.Stop();
@@ -63,6 +75,7 @@ public class AudioManager : MonoBehaviour
         intromusic.Stop();
         mainMenuMusic.Stop();
         levelmusic.Stop();
+        warning.Stop();
     }
     public void PlaySFX(int sfxToPlay)
     {

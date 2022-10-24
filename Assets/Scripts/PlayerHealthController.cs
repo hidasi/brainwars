@@ -63,6 +63,7 @@ public class PlayerHealthController : MonoBehaviour
                 }
                 flashCounter = 0f;
             }
+            UIController.instance.UpdateHealth(currentHealth, maxHealth);
         }
     }
     public void DamagePlayer(float damageAmount)

@@ -30,6 +30,10 @@ public class BulletController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.tag == "Boss")
+        {
+            BossHealthController.instance.TakeDamage(damageAmount);
+        }
         if (other.tag == "Enemy")
         {
             other.GetComponentInParent<EnemyHealthController>().DamageEnemy(damageAmount);

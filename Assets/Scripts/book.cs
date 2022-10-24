@@ -21,6 +21,8 @@ public class book : MonoBehaviour
     private int destroybook;
     public float timeBetweenLetters=0.1f;
 
+
+
     // Start is called before the first frame update
     void Start()
     {

@@ -15,6 +15,7 @@ public class AbilityUnlock : MonoBehaviour
     public PlayerController player;
     private float moveinitial;
     private float dashinitial;
+    public int bossn;
     //public TMP_Text unlockText;
 
     private void Start()
@@ -22,6 +23,7 @@ public class AbilityUnlock : MonoBehaviour
         player = FindObjectOfType<PlayerController>();
         moveinitial = player.moveSpeed;
         dashinitial = player.dashSpeed;
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -72,7 +74,14 @@ public class AbilityUnlock : MonoBehaviour
                 Instantiate(pickupEffect, transform.position, transform.rotation);
                 player.moveSpeed = moveinitial;
                 player.dashSpeed = dashinitial;
+                if (bossn == 1)
+                {
+                    PlayerPrefs.SetInt("boss1", 2);
+                    PlayerPrefs.SetInt("doublejump", 1);
+                }
                 Destroy(gameObject);
+
+                
 
             }
         }
