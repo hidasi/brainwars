@@ -43,6 +43,7 @@ public class PlayerHealthController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UIController.instance.UpdateHealth(currentHealth, maxHealth);
         if (invincCounter > 0)
         {
             invincCounter -= Time.deltaTime;

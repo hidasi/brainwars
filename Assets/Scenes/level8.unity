@@ -16700,7 +16700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ab664b35abb0a34a8b82c39899b90c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  threshold1: 20
+  threshold1: 12
   threshold2: 5
   canvas: {fileID: 457087359}
   activeTime: 5
@@ -16744,7 +16744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossHealthSlider: {fileID: 1822770511}
-  bosscurrentHealth: 40
+  bosscurrentHealth: 25
   theBoss: {fileID: 368487315}
 --- !u!212 &368487318
 SpriteRenderer:
