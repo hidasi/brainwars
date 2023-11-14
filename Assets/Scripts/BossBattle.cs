@@ -14,6 +14,8 @@ public class BossBattle : MonoBehaviour
     private Transform targetPoint;
     public float moveSpeed;
 
+    private float moveinitial;
+
     public Animator anim;
     public Transform theBoss;
 
@@ -28,8 +30,12 @@ public class BossBattle : MonoBehaviour
     public ParticleSystem particle;
     public Transform transf;
 
+    public Color colorboss;
+
     public bool pausar;
     private int chefe;
+
+    public PlayerController player;
 
     public GameObject gate;
     private bool End;
@@ -40,11 +46,15 @@ public class BossBattle : MonoBehaviour
         activeCounter = activeTime;
         shotCounter = timeBetweenShots1;
 
+        
+
         chefe = PlayerPrefs.GetInt("boss1");
         if(chefe == 1)
         {
+            
             Instantiate(particle, transf);
             abilityprefab.SetActive(true);
+            
         }
         if(chefe==1 || chefe == 2)
         {
@@ -199,6 +209,8 @@ public class BossBattle : MonoBehaviour
     {
         if (End == false)
         {
+            colorboss = FindObjectOfType<SpriteRenderer>().color;
+            colorboss.a = 1f;
             StartCoroutine(EndedBattle());
             End = true;
         }
@@ -207,7 +219,22 @@ public class BossBattle : MonoBehaviour
 
     IEnumerator EndedBattle()
     {
+        
         pausar = true;
+        player = FindObjectOfType<PlayerController>();
+        moveinitial = player.moveSpeed;
+        player.moveSpeed = 0;
+        
+        theBoss.gameObject.SetActive(true);
+        
+        anim.SetTrigger("fadeout");
+        anim.SetTrigger("fadein");
+
+        colorboss = FindObjectOfType<SpriteRenderer>().color;
+        colorboss.a = 1f;
+
+        yield return new WaitForSeconds(2f);
+        colorboss.a = 1f;
         anim.SetTrigger("death");
         AudioManager.instance.PAUSEMUSIC();
         AudioManager.instance.PlaySFX(33);
@@ -217,6 +244,7 @@ public class BossBattle : MonoBehaviour
         PlayerPrefs.SetInt("boss1",1);
         gate.SetActive(true);
         AudioManager.instance.PlayLevelMusic();
+        player.moveSpeed = moveinitial;
         Destroy(canvas);
         Destroy(gameObject);
         
